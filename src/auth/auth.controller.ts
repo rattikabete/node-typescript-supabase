@@ -8,7 +8,7 @@ import {
     RefreshTokenRequest
 } from './auth.types';
 import { AppError } from '../middleware/error.middleware';
-import { logger } from '../utils/logger';
+// import { logger } from '../utils/logger';
 
 export const signIn = async (
     req: Request,

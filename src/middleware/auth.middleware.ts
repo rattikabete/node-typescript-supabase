@@ -4,7 +4,6 @@ import { supabaseClient } from '../config/supabase';
 import { AppError } from './error.middleware';
 import { logger } from '../utils/logger';
 
-// Extend Express Request type
 declare global {
     namespace Express {
         interface Request {
