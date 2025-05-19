@@ -1,4 +1,4 @@
-import "jsr:@supabase/functions-js/edge-runtime.d.ts"
+import 'jsr:@supabase/functions-js/edge-runtime.d.ts'
 import { createClient } from 'jsr:@supabase/supabase-js@2'
 
 const corsHeaders = {
@@ -19,7 +19,7 @@ Deno.serve(async (req) => {
         // Get the auth event from the request
         const { type, record } = await req.json()
 
-        const supabaseAdmin = createClient(
+        const supabaseClient = createClient(
             Deno.env.get('SUPABASE_URL') ?? '',
             Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
         )
@@ -29,7 +29,7 @@ Deno.serve(async (req) => {
             case 'signup': {
                 // User signed up, create a profile record
                 if (record?.id) {
-                    const { error } = await supabaseAdmin
+                    const { error } = await supabaseClient
                         .from('profiles')
                         .insert({
                             id: record.id,
